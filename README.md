@@ -7,7 +7,10 @@ Persistence of infrastructure and applications handled by AWS services.
     - Create name of public hosted zone
 
 2. Install the Jenkins X cli client
-    - On mac os/linux use "brew install jenkins-x/jx/jx"
+    - On mac os use "brew install jenkins-x/jx/jx"
+    - On linux
+        - curl -L "https://github.com/jenkins-x/jx/releases/download/$(curl --silent https://api.github.com/repos/jenkins-x/jx/releases/latest | jq -r '.tag_name')/jx-linux-amd64.tar.gz" | tar xzv "jx"
+        - sudo mv jx /usr/local/bin
 
 
 3. Creating the Kubernetes cluster
@@ -21,3 +24,16 @@ Persistence of infrastructure and applications handled by AWS services.
         - jx get eks
 
 4. Installing the jenkins x platform into your kubernetes cluster
+    - Install jenkins X platform with jenkins server, nexus server, config stored in kubernetes all packaged into Helm chart
+    - command
+        - jx install --provider=eks --domain=jenkinsx-kubernetes --default-environment-prefix=jenkinsx-kubernetes
+    - jx assumes you that you are using github
+        - requires you to define an API token, which it will use to access Git repos on your behalf
+        - go to link
+            - specify the unique name  
+                - click Generate token
+                    - jx opens the jenkins server on your Route 53 Public hosted zone
+        
+
+            
+
