@@ -27,13 +27,22 @@ Persistence of infrastructure and applications handled by AWS services.
     - Install jenkins X platform with jenkins server, nexus server, config stored in kubernetes all packaged into Helm chart
     - command
         - jx install --provider=eks --domain=jenkinsx-kubernetes --default-environment-prefix=jenkinsx-kubernetes
+    - Got error  error: unable to load in-cluster configuration, KUBERNETES_SERVICE_HOST and KUBERNETES_SERVICE_PORT must be defined  
+        - the service_host and service_port were not set in pod environment
+            - Solution (reproduce it)
+                - Create in-cluster client in a pod
+                    
+
+
     - jx assumes you that you are using github
         - requires you to define an API token, which it will use to access Git repos on your behalf
         - go to link
             - specify the unique name  
                 - click Generate token
                     - jx opens the jenkins server on your Route 53 Public hosted zone
-        
 
-            
+
+5. Creating a New Spring Boot project
+    - create first project and deploy it into cluster using our CD pipeline
+        - jx create spring -d web -d actuator
 
